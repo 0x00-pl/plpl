@@ -1,7 +1,12 @@
 import os
 from node import *
 
-
+def gen_innerdata(v):
+    return (v,)
+def is_innerdata(d):
+    return type(d)==tuple
+def innerdata(d):
+    return d[0]
 
 class mempool:
     mem=[]
@@ -20,8 +25,8 @@ class mempool:
         pass
     
     def dump(self,uid):
-        if type(uid)==tuple:
-            return uid[0]
+        if is_innerdata(uid):
+            return innerdata(uid)
         node= self.getobj(uid)
         data= node_data(node)
         name= node_name(node)
@@ -34,8 +39,8 @@ class mempool:
             return { autoname[i]:self.dump(data[i]) for i in range(len(data)) }
 
     def dump_node(self,uid):
-        if type(uid)==tuple:
-            return uid[0]
+        if is_innerdata(uid):
+            return innerdata(uid)
         node= self.getobj(uid)
         return gen_node([self.dump_node(i) for i in node_data(node)], node_name(node), node_textat(node))
 
