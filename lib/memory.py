@@ -1,4 +1,3 @@
-import os
 from node import *
 
 def gen_innerdata(v):
