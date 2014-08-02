@@ -45,15 +45,6 @@ def apply_args(mp, uid, args):
                              node_textat(node)))
     
     
-def call(mp, uid, args):
-    if is_innerdata(uid):
-        v= innerdata(uid)
-        return is_symbol(v) and apply_symbol(v,args) or uid
-
-    node= mp.getobj(uid)
-    data= node_data(node)
-    return mp.gcnew()
-    
 # (add 1 1) --> 2
 def eval(mp,uid):
     while not (is_innerdata(uid) or is_lambda(mp,uid)):
