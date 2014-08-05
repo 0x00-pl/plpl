@@ -7,9 +7,21 @@ def is_innerdata(d):
 def innerdata(d):
     return d[0]
 
-class mempool:
+class sys_mempool:
+    def gcnew(self,node):
+        return node
+    def getobj(self,dest):
+        return dest
+    def zipmem():
+        pass
+    def dump_node(self,uid):
+       return uid
+    def import_node(self,node):
+       return node
+
+class my_mempool:
+    # type(uid)==int
     mem=[]
-    name={}
     def gcnew(self,node):
         self.mem.append(node)
         return len(self.mem)-1
@@ -17,9 +29,6 @@ class mempool:
     def getobj(self,dest):
         return self.mem[dest]
 
-    def name2uid(self,name):
-        return self,name[str(name)]
-    
     def zipmem(self):
         pass
     
@@ -54,8 +63,8 @@ class mempool:
 if __name__=='__main__':
     import parser
     test_file_node= parser.read_all(open('../test/testfile.txt'))
-    mp=mempool()
-    root=mp.import_node(test_file_node)
+    mp= my_mempool()
+    root= mp.import_node(test_file_node)
     print('root: ',root)
     for i in range(len(mp.mem)):
         print(i, ' : ', mp.mem[i])
