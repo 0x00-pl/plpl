@@ -59,7 +59,7 @@ if __name__=='__main__':
     fib=('lambda',('fib','a1','a2','n'),
          ('cond',(op.ge,2,'n'),'a2',
           True,('fib','a2',(op.add,'a1','a2'),(op.sub,'n',1))))
-    exp= (fib,1,1,200)
+    exp= (fib,1,1,201)
     print(exp)
     print(eval(exp))
 
